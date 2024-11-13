@@ -7,6 +7,25 @@
         <div>
             <p>114514</p>
             <p>1919810</p>
+            <pre id="display"></pre>
         </div>
+        <script>
+            function write(text){
+                console.log(text.length);
+                var n=text.length
+                var T=""
+                for(var i=0;i<n;i+=1){
+                    if(text[i]=='<') T+="&lt;";
+                    else if(text[i]=='>') T+='&gt;';
+                    else T+=text[i];
+                }
+                console.log(T);
+                document.getElementById('display').innerHTML=T;
+            }
+            fetch('index.html')
+                .then(response => response.text())
+                .then(text => write(text))
+                .catch(error => console.error('Error reading file:', error));
+        </script>
     </body>
 </html>
