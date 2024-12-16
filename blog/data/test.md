@@ -2,15 +2,29 @@
 
 ## 114514
 
+$E=mc^2$
+
 $$
 E=mc^2
 $$
 
+~test~
 
+*test*
+
+**test**
+
+- test
+
+`test`
 
 ```cpp
+#include<iostream>
+#include<cstdio>
+using namespace std;
 int main(){
-    //1919810
+    printf("114514\n1919810\n");
+    return 0;
 }
 ```
 
