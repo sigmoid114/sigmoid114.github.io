@@ -14,9 +14,7 @@
                 },
             };
         </script>
-    </head>
-    <body>
-        <div id="main"></div>
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
         <script>
             function write(dat){
                 hljs.highlightAll();
@@ -26,12 +24,15 @@
                     }
                 })
                 document.getElementById('main').innerHTML=marked(dat);
+                MathJax.typeset();
             }
             fetch('../data/test.md')
                 .then(res => res.text())
                 .then(dat => write(dat))
                 .catch(err => console.error('Error:', err));
         </script>
-        <script async src="../js/es5/tex-mml-chtml.js"></script>
+    </head>
+    <body>
+        <div id="main"></div>
     </body>
 </html>

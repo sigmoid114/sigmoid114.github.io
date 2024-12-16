@@ -5,7 +5,7 @@
 $E=mc^2$
 
 $$
-E=mc^2
+\sum_{i=1}^na_i
 $$
 
 ~test~
