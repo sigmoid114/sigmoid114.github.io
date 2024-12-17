@@ -6,8 +6,8 @@ MathJax = {
         processEnvironments: true,
     },
 };
-var path = window.location.pathname;
-var filename = path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf('.'));
+path = window.location.pathname;
+filename = path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf('.'));
 
 fetch("../json/articles.json")
     .then(res => res.text())
