@@ -27,7 +27,7 @@ fetch("../json/articles.json")
         m=tags.length; div=document.getElementById('tags');
         for(var i=0;i<m;i+=1){
             a=document.createElement('a');
-            a.href="../lists/"+tags[i].id+".html";
+            a.href="../list/"+tags[i].id+".html";
             a.innerHTML=tags[i].name;
             div.appendChild(a);
         }
