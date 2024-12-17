@@ -17,7 +17,7 @@ fetch('../json/articles.json')
         n=list.length;
         div=document.getElementById('list');
         for(var i=0;i<n;i+=1){
-            flag=(filename=="");
+            flag=(filename=="/blog/list"||filename=="index");
             tags=list[i].tags;
             m=tags.length;
             for(var j=0;j<m;j+=1){
