@@ -52,7 +52,7 @@ fetch('../json/tags.json')
         n=list.length;
         for(var i=0;i<n;i+=1) {
             if(list[i].id==filename) {
-                document.title="文章列表 - "+list[i].name;
+                document.title="文章列表 - "+list[i].name+" - "+document.title;
                 document.getElementById('title').innerHTML="文章列表 - "+list[i].name;
                 break;
             }

@@ -22,7 +22,7 @@ fetch("../json/articles.json")
                 break;
             }
         }
-        document.title=title;
+        document.title=title+" - "+document.title;
         document.getElementById('title').innerHTML=title;
         m=tags.length; div=document.getElementById('tags');
         for(var i=0;i<m;i+=1){

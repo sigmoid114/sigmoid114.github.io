@@ -5,12 +5,13 @@
         <script src="../js/marked.min.js"></script>
         <script src="../js/highlight.js"></script>
         <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <script async src="../js/main.js"></script>
         <script src="../js/loadarticle.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/main.css"></link>
     </head>
     <body>
         <div id="nav-bar">
-            <div>sigmoid114的博客</div>
+            <div class="name"></div>
             <a href="../" class="bold">首页</a>
             <a href="../list/">文章</a>
             <a href="../list/classification.html">分类</a>
@@ -25,9 +26,13 @@
             <div id="main"></div>
         </div>
         <div id="side-bar">
-            <img id="avatar" src="../src/avatar.jpg">
-            <div id="name">sigmoid114的博客</div>
-            <div id="text">114514</div>
+            <img class="avatar" src="../src/avatar.jpg">
+            <div class="name"></div>
+            <div class="intr"></div>
         </div>
+        <script>
+            div=document.getElementsByClassName('name');
+            console.log(div);
+        </script>
     </body>
 </html>
