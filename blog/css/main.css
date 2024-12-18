@@ -1,0 +1,89 @@
+body{
+    background-image: url("../src/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+    margin: 0px;
+}
+
+#nav-bar{
+    background-color: #0e90d2;
+    height: 25px;
+    width: 1286px;
+    padding: 15px 210px;
+}
+#nav-bar div{
+    font-size:19px;
+    color:#ffffff;
+    font-weight: 800;
+    float: left;
+    margin: 0px 10px;
+}
+#nav-bar a{
+    text-decoration: none;
+    font-size:17px;
+    color:#ffffff;
+    margin: 0px 10px;
+}
+#nav-bar form{
+    position: absolute;
+    top:7px;
+    left:1271px;
+}
+#nav-bar input{
+    height: 30px;
+    width: 159px;
+    padding-left: 10px;
+    font-size: 15px;
+    border-radius: 0px;
+}
+#nav-bar button{
+    position: absolute;
+    height: 37px;
+    width: 66px;
+    left: 185px;
+    font-size: 15px;
+}
+
+#content{
+    background-color: rgba(255,255,255,0.85);
+    padding: 18px;
+    position: absolute;
+    top: 95px;
+    left: 210px;
+    width: 853px;
+    border-radius: 2px;
+}
+
+#side-bar{
+    background-color: rgb(255,255,255);
+    position: absolute;
+    top: 95px;
+    left: 1116px;
+    height: 254px;
+    width: 411px;
+    border-radius: 2px;
+}
+#avatar{
+    transform: scale(0.3);
+    border-radius: 50%;
+    position: absolute;
+    border-radius: 50%;
+    top: -83px;
+    left: 53px;
+}
+#name{
+    position: absolute;
+    top: 150px;
+    width: 411px;
+    font-size: 23px;
+    font-weight: 600;
+    text-align: center;
+}
+#text{
+    position: absolute;
+    top: 205px;
+    width: 411px;
+    font-size: 15px;
+    text-align: center;
+}
