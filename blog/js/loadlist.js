@@ -27,7 +27,7 @@ fetch('../json/articles.json')
             }
             if(!flag) continue;
             a=document.createElement('a');
-            a.href="../articles/"+list[i].title+".html";
+            a.href="../articles/"+list[i].id+".html";
             article=document.createElement('div');
             son1=document.createElement('div');
             son1.innerHTML=list[i].title;
