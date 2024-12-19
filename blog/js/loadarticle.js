@@ -14,10 +14,11 @@ fetch("../json/articles.json")
     .then(dat => {
         list=JSON.parse(dat).list;
         n=list.length;
-        title=""; tags=[];
+        title=""; info=""; tags=[];
         for(var i=0;i<n;i+=1){
             if(list[i].id==filename){
                 title=list[i].title;
+                info="posted on "+list[i].time+" | under ";
                 tags=list[i].tags;
                 break;
             }
@@ -29,8 +30,10 @@ fetch("../json/articles.json")
             a=document.createElement('a');
             a.href="../list/"+tags[i].id+".html";
             a.innerHTML=tags[i].name;
-            div.appendChild(a);
+            info+=a.outerHTML+" ";
         }
+        info+="|";
+        div.innerHTML=info;
         MathJax.typeset();
     })
     .catch(err => console.log('Error:', err));

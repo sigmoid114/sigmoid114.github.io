@@ -47,20 +47,20 @@ body{
 
 #content{
     background-color: rgba(255,255,255,0.85);
-    padding: 18px;
+    padding: 26px 17px;
     position: absolute;
-    top: 95px;
-    left: 205px;
-    width: 828px;
+    top: 93px;
+    left: 204px;
+    width: 830px;
     border-radius: 2px;
 }
 
 #side-bar{
     background-color: rgb(255,255,255);
     position: absolute;
-    top: 95px;
-    left: 1085px;
-    height: 246px;
+    top: 93px;
+    left: 1084px;
+    height: 247px;
     width: 400px;
     border-radius: 2px;
 }
@@ -69,12 +69,12 @@ body{
     border-radius: 50%;
     position: absolute;
     border-radius: 50%;
-    top: -87px;
+    top: -85px;
     left: 49px;
 }
 #name{
     position: absolute;
-    top: 143.5px;
+    top: 144px;
     width: 400px;
     font-size: 24px;
     font-weight: 600;
@@ -82,8 +82,12 @@ body{
 }
 #intr{
     position: absolute;
-    top: 196px;
+    top: 197px;
     width: 400px;
     font-size: 15px;
     text-align: center;
+}
+
+a{
+    text-decoration: none;
 }
