@@ -88,6 +88,9 @@ body{
     text-align: center;
 }
 
+body{
+    font-size: 16px;
+}
 a{
     text-decoration: none;
 }
