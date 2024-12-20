@@ -1,58 +1,5 @@
-#title{
-    font-size: 29px;
-}
-#tags{
+.tags{
     padding: 27px 0px;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
     border-bottom: 1.5px solid #e8e8e8;
     margin-bottom: 20px;
-}
-#main{
-    line-height: 1.7em;
-}
-#main *{
-    margin-bottom: 0.9rem 0;
-}
-#main>*:not(:first-child){
-    margin: 0.9rem 0;
-}
-#main>h1{
-    margin-bottom: 2.1rem 0;
-    padding-bottom: .2em;
-    border-bottom: solid 1px #eee;
-}
-#main>h1:not(:first-child){
-    margin: 2.1rem 0;
-}
-#main>h2{
-    margin-bottom: 2.1rem 0;
-}
-#main>h2:not(:first-child){
-    margin: 2.1rem 0;
-}
-#main>h3{
-    margin-bottom: 2.1rem 0;
-}
-#main>h3:not(:first-child){
-    margin: 2.1rem 0;
-}
-#main>h4{
-    margin-bottom: 2.1rem 0;
-}
-#main>h4:not(:first-child){
-    margin: 2.1rem 0;
-}
-#main>h5{
-    margin-bottom: 2.1rem 0;
-}
-#main>h5:not(:first-child){
-    margin: 2.1rem 0;
-}
-#main>h6{
-    margin-bottom: 2.1rem 0;
-}
-#main>h6:not(:first-child){
-    margin: 2.1rem 0;
 }
