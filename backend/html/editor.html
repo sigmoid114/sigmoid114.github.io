@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Editor</title>
+        <script src="../js/jquery.min.js"></script>
+        <link rel="stylesheet" href="../editor.md/css/editormd.min.css"/>
+        <script src="../editor.md/lib/marked.min.js"></script>
+        <script src="../editor.md/lib/prettify.min.js"></script>
+        <script src="../editor.md/editormd.js"></script>
+        <script src="../js/loadeditor.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            <h2>标题</h2>
+            <textarea id="title"></textarea>
+            <h2>正文</h2>
+            <div style="height:400px; width: 1000px;">
+                <div id="editor">
+                    <textarea id="editormd"></textarea>
+                </div>
+            </div>
+            <button id="submit">提交</button>
+        </div>
+        <script>
+            var aid="test"; loadeditor(aid);
+            document.getElementById('submit').addEventListener('click',function(){
+                submit(aid);
+            });
+        </script>
+    </body>
+</html>

@@ -11,8 +11,42 @@ var open=function(url,browser){
 
 app.use(express.json());
 app.use('/blog',express.static('blog'));
+app.use('/backend',express.static('backend'));
+
+var S={"message":"Success"};
+var F={"message":"Failed"};
+
+app.post('/get_article',(req,res)=>{
+	var id=req.body.id; var flag=0;
+	var list=fs.readFileSync('blog/json/articles.json');
+	var a=JSON.parse(list).list; var n=a.length;
+	for(var i=0;i<n;i+=1){
+		if(a[i].id==id){
+			flag=1; break;
+		}
+	}
+	if(flag){
+		var markdown=fs.readFileSync('blog/data/'+id+'.md','utf8');
+		res.json({"markdown":markdown});
+	}
+	else{
+		res.json({"markdown":"#114514\n#1919810\n"});
+	}
+})
+
+app.post('/submit_article',(req,res)=>{
+	id=req.body.id;
+	markdown=req.body.markdown;
+	fs.writeFile(`blog/data/${id}.md`,markdown,'utf8',(err)=>{
+		if(err){
+			console.log('Error:',err);
+			res.json(F);
+		}
+	});
+	res.json(S);
+})
 
 var server=app.listen(1145,()=>{
-	open('localhost:1145/blog','firefox');
+	//open('localhost:1145/blog','firefox');
 	console.log('success');
 })
