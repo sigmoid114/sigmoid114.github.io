@@ -16,25 +16,29 @@ app.use('/backend',express.static('backend'));
 var S={"message":"Success"};
 var F={"message":"Failed"};
 
-app.post('/get_markdown',(req,res)=>{
+app.post('/get_article',(req,res)=>{
 	var id=req.body.id; var flag=0;
 	var list=fs.readFileSync('blog/json/articles.json');
 	var a=JSON.parse(list).list; var n=a.length;
+	var dat={
+		"title":"",
+		"tag":"",
+		"markdown":""
+	};
 	for(var i=0;i<n;i+=1){
 		if(a[i].id==id){
+			dat.title=a[i].title;
+			dat.tag=a[i].tag;
 			flag=1; break;
 		}
 	}
 	if(flag){
-		var markdown=fs.readFileSync('blog/data/'+id+'.md','utf8');
-		res.json({"markdown":markdown});
+		dat.markdown=fs.readFileSync('blog/data/'+id+'.md','utf8');
 	}
-	else{
-		res.json({"markdown":""});
-	}
+	res.json(dat);
 })
 
-app.post('/submit_markdown',(req,res)=>{
+app.post('/submit_article',(req,res)=>{
 	id=req.body.id;
 	markdown=req.body.markdown;
 	fs.writeFile(`blog/data/${id}.md`,markdown,'utf8',(err)=>{

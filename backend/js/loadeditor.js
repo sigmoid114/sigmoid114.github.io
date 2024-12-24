@@ -1,5 +1,5 @@
 function loadeditor(id){
-    fetch('../../get_markdown',{
+    fetch('../../get_article',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
@@ -8,6 +8,8 @@ function loadeditor(id){
     })
         .then(res=>res.json())
         .then(dat=>{
+            document.getElementById('title').value=dat.title;
+            document.getElementById('tag').value=dat.tag.name;
             editormd("editor",{
                 width:"100%",
                 height:"100%",
@@ -20,7 +22,7 @@ function loadeditor(id){
 }
 
 function submit(id){
-    fetch('../../submit_markdown',{
+    fetch('../../submit_article',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'

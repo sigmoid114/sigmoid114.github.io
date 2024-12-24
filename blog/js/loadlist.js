@@ -28,14 +28,9 @@ fetch('../json/articles.json')
         n=list.length;
         div=document.getElementById('content');
         for(var i=0;i<n;i+=1){
+            tag=list[i].tag;
             flag=(filename=="/blog/list/"||filename=="index");
-            tags=list[i].tags;
-            m=tags.length;
-            for(var j=0;j<m;j+=1){
-                if(tags[j].id==filename){
-                    flag=1; break;
-                }
-            }
+            if(tag.id==filename) flag=1;
             if(!flag) continue;
             a=document.createElement('a');
             a.href="../articles/"+list[i].id+".html";
@@ -44,12 +39,10 @@ fetch('../json/articles.json')
             son1.innerHTML=list[i].title;
             son2=document.createElement('div');
             info="| posted on "+list[i].time+" | under ";
-            for(var j=0;j<m;j+=1){
-                grandson=document.createElement('a');
-                grandson.href="../list/"+tags[j].id+".html";
-                grandson.innerHTML=tags[j].name;
-                info+=grandson.outerHTML+" ";
-            }
+            grandson=document.createElement('a');
+            grandson.href="../list/"+tag.id+".html";
+            grandson.innerHTML=tag.name;
+            info+=grandson.outerHTML+" ";
             son2.innerHTML=info;
             son3=document.createElement('div');
             fetch("../data/"+list[i].id+'.md')
@@ -57,7 +50,7 @@ fetch('../json/articles.json')
                 .then(dat1 => son3.innerHTML=cut(dat1))
                 .catch(err1 => console.log('Error:',err1))
             son1.classList.add('title');
-            son2.classList.add('tags');
+            son2.classList.add('tag');
             son3.classList.add('main');
             a.appendChild(son1);
             a.appendChild(son2);

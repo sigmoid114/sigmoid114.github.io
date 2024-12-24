@@ -13,25 +13,22 @@ fetch("../json/articles.json")
     .then(res => res.text())
     .then(dat => {
         list=JSON.parse(dat).list;
-        n=list.length;
-        title=""; info=""; tags=[];
+        n=list.length; title=""; info=""; tag={};
         for(var i=0;i<n;i+=1){
             if(list[i].id==filename){
                 title=list[i].title;
                 info="posted on "+list[i].time+" | under ";
-                tags=list[i].tags;
+                tag=list[i].tag;
                 break;
             }
         }
         document.title=title+" - "+document.title;
         document.getElementById('title').innerHTML=title;
-        m=tags.length; div=document.getElementById('tags');
-        for(var i=0;i<m;i+=1){
-            a=document.createElement('a');
-            a.href="../list/"+tags[i].id+".html";
-            a.innerHTML=tags[i].name;
-            info+=a.outerHTML+" ";
-        }
+        div=document.getElementById('tag');
+        a=document.createElement('a');
+        a.href="../list/"+tag.id+".html";
+        a.innerHTML=tag.name;
+        info+=a.outerHTML+" ";
         info+="|";
         div.innerHTML=info;
         MathJax.typeset();
