@@ -11,6 +11,7 @@
     </head>
     <body>
         <div id="main">
+            <a href="../html/management.html">返回</a>
             <h2>标题</h2>
             <textarea id="title"></textarea>
             <h2>正文</h2>
@@ -22,7 +23,7 @@
             <button id="submit">提交</button>
         </div>
         <script>
-            var aid="test"; loadeditor(aid);
+            var aid="$"; loadeditor(aid);
             document.getElementById('submit').addEventListener('click',function(){
                 submit(aid);
             });

@@ -1,5 +1,5 @@
 function loadeditor(id){
-    fetch('../../get_article',{
+    fetch('../../get_markdown',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
@@ -11,6 +11,7 @@ function loadeditor(id){
             editormd("editor",{
                 width:"100%",
                 height:"100%",
+                tex:true,
                 markdown: dat.markdown,
                 path:"../editor.md/lib/"
             });
@@ -19,7 +20,7 @@ function loadeditor(id){
 }
 
 function submit(id){
-    fetch('../../submit_article',{
+    fetch('../../submit_markdown',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
