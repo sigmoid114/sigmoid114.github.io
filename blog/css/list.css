@@ -4,3 +4,7 @@
 .main{
     margin: 0px;
 }
+.text-area{
+    display: inline-block;
+    margin-bottom: 15px;
+}

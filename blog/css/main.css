@@ -85,12 +85,14 @@ a{
     text-decoration: none;
 }
 
-.text-area{
-    background-color: rgba(255,255,255,0.85);
-    padding: 26px 17px;
+#content{
     position: absolute;
     top: 93px;
     left: 204px;
+}
+.text-area{
+    background-color: rgba(255,255,255,0.85);
+    padding: 26px 17px;
     width: 830px;
     border-radius: 2px;
     color:black;

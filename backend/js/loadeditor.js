@@ -1,13 +1,14 @@
-function loadeditor(id){
+function loadeditor(aid){
     fetch('../../get_article',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
         },
-        body:JSON.stringify({'id':id})
+        body:JSON.stringify({'aid':aid})
     })
         .then(res=>res.json())
         .then(dat=>{
+            console.log(dat);
             document.getElementById('title').value=dat.title;
             document.getElementById('tag').value=dat.tag.name;
             editormd("editor",{
@@ -21,15 +22,18 @@ function loadeditor(id){
         .catch(err=>console.log('Error:',err))
 }
 
-function submit(id){
+function submit(aid){
     fetch('../../submit_article',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
         },
         body:JSON.stringify({
-            'id':id,
-            'markdown':document.getElementById('editormd').value
+            'aid':aid,
+            'markdown':document.getElementById('editormd').value,
+            'title':document.getElementById('title').value,
+            'tag':document.getElementById('tag').value,
+            'toplevel':document.getElementById('toplevel').value
         })
     })
         .then(res=>res.json())
