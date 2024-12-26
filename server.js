@@ -8,6 +8,11 @@ var open=function(url,browser){
 		if(err) console.log('Error:',err);
 	})
 }
+var git=function(cmd){
+	cp.exec(`git ${cmd}`,(err,stdout,stderr)=>{
+		if(err) console.log('Error:',err);
+	});
+}
 
 app.use(express.json());
 app.use('/blog',express.static('blog'));
@@ -214,9 +219,10 @@ app.get('/backend/editor/:aid',(req,res,nxt)=>{
 })
 
 app.post('/update_all',(req,res)=>{
-	/*cp.exec('git add .');
-	cp.exec('git commit');
-	cp.exec('git push origin main');*/
+	console.log('ok');
+	/*git('add .');
+	git('commit -m \"\"');
+	git('push origin main');*/
 	res.json(S);
 })
 

@@ -155,3 +155,13 @@ a{
 .main>h6:not(:first-child){
     margin: 2.1rem 0;
 }
+.main>blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    border-left: 5px solid #ddd;
+}
+/*.main>p>code{
+    background: #ffd9dc;
+    padding: 2px;
+    color: #d30038;
+}*/
