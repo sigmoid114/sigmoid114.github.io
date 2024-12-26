@@ -39,6 +39,7 @@ function submit(aid){
         .then(res=>res.json())
         .then(dat=>{
             alert(dat.message);
+            window.location=`../../blog/articles/${aid}.html`;
         })
         .catch(err=>console.log('Error',err))
 }

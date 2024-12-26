@@ -1,0 +1,14 @@
+.tools{
+    margin: 20px;
+    font-size: 24px;
+}
+.tools>input{
+    height:24px;
+    margin-right: 20px;
+}
+#title{
+    width: 500px;
+}
+.text{
+    height:700px;
+}

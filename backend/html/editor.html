@@ -8,28 +8,29 @@
         <script src="../editor.md/lib/prettify.min.js"></script>
         <script src="../editor.md/editormd.js"></script>
         <script src="../js/loadeditor.js"></script>
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/editor.css">
     </head>
     <body>
-        <div id="main">
+        <div id="nav-bar">
             <a href="../html/management.html">返回</a>
-            <h2>标题</h2>
-            <input id="title">
-            <h3>分类</h3>
-            <input id="tag">
-            <h3>置顶等级</h3>
-            <input id="toplevel">
-            <h2>正文</h2>
-            <div style="height:400px; width: 1000px;">
+        </div>
+        <div id="main">
+            <form class="tools">
+                标题 <input id="title">
+                分类 <input id="tag">
+                置顶等级 <input id="toplevel">
+            </form>
+            <div class="text">
                 <div id="editor">
                     <textarea id="editormd"></textarea>
                 </div>
             </div>
-            <button id="submit">提交</button>
-            <button id="save">存草稿</button>
+            <a id="submit" class="blue">提交</a>
         </div>
         <script>
             var aid="$"; loadeditor(aid);
-            document.getElementById('submit').addEventListener('click',function(){
+            document.getElementById('submit').addEventListener('click',()=>{
                 submit(aid);
             });
         </script>

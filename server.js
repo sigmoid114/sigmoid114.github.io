@@ -52,13 +52,48 @@ function get_tag(tname){
 			console.log('Error:',err); return F;
 		}
 	});
-	fs.writeFile('blog/json/tags.json',JSON.stringify({"list":t}),'utf8',(err)=>{
+	fs.writeFileSync('blog/json/tags.json',JSON.stringify({"list":t}),'utf8',(err)=>{
 		if(err){
 			console.log('Error:',err); return F;
 		}
 	});
 	return tag;
 }
+
+function maintain_tags(a){
+	var list=fs.readFileSync('blog/json/tags.json');
+	var t=JSON.parse(list).list;
+	console.log(t);
+	var n=a.length,m=t.length; var vi={};
+	var t_new=[]; var flag=0;
+	for(var i=0;i<n;i+=1) vi[a[i].tag.id]=1;
+	for(var i=0;i<m;i+=1){
+		if(!vi[t[i].id]){
+			fs.unlinkSync(`blog/list/${t[i].id}.html`); flag=1;
+		}
+		else t_new.push(t[i]);
+	}
+	if(flag){
+		fs.writeFileSync('blog/json/tags.json',JSON.stringify({"list":t_new}),'utf8',(err)=>{
+			if(err){
+				console.log('Error:',err); return 0;
+			}
+		});
+	}
+	return 1;
+}
+
+app.get('/',(req,res)=>{
+	var html=fs.readFileSync('index.html').toString();
+	var n=html.length,flag=0; var s="";
+	for(var i=0;i<n;i+=1){
+		s+=html[i];
+		if(!flag&&html[i-2]=='d'&&html[i-1]=='y'&&html[i]=='>'){
+			s+="<a href=\"./backend/html/management.html\">博客管理</a>"; flag=1;
+		}
+	}
+	res.send(s);
+})
 
 app.post('/get_article',(req,res)=>{
 	var aid=req.body.aid; var flag=0;
@@ -121,13 +156,47 @@ app.post('/submit_article',(req,res)=>{
 			console.log('Error:',err); res.json(F);
 		}
 	});
-	res.json(S);
+	if(maintain_tags(a)) res.json(S);
+	else res.json(F);
 })
 
 app.post('/get_articles',(req,res)=>{
 	var list=fs.readFileSync('blog/json/articles.json');
 	res.json(JSON.parse(list));
 });
+
+app.post('/delete_article',(req,res)=>{
+	var aid=req.body.aid; var a_new=[];
+	var list=fs.readFileSync('blog/json/articles.json');
+	var a=JSON.parse(list).list; var n=a.length;
+	fs.unlinkSync(`blog/data/${aid}.md`);
+	fs.unlinkSync(`blog/articles/${aid}.html`);
+	for(var i=0;i<n;i+=1){
+		if(a[i].id!=aid) a_new.push(a[i]);
+	}
+	fs.writeFile('blog/json/articles.json',JSON.stringify({"list":a_new}),'utf8',(err)=>{
+		if(err){
+			console.log('Error:',err); res.json(F);
+		}
+	});
+	if(maintain_tags(a_new)) res.json(S);
+	else res.json(F);
+})
+
+app.get('/backend/editor/',(req,res)=>{
+	var aid=rand_id();
+	var html=fs.readFileSync('backend/html/editor.html').toString();
+	var n=html.length,flag=0;
+	var L="",R="";
+	for(var i=0;i<n;i+=1){
+		if(html[i]=='$') flag=1;
+		else{
+			if(!flag) L+=html[i];
+			else R+=html[i];
+		}
+	}
+	res.send(L+aid+R);
+})
 
 app.get('/backend/editor/:aid',(req,res,nxt)=>{
 	var aid=req.params.aid;
@@ -145,6 +214,6 @@ app.get('/backend/editor/:aid',(req,res,nxt)=>{
 })
 
 var server=app.listen(1145,()=>{
-	//open('localhost:1145/blog','firefox');
+	//open('localhost:1145/','firefox');
 	console.log('success');
 })

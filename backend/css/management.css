@@ -1,0 +1,13 @@
+#content>div{
+    margin: 20px 0px;
+    padding: 20px 50px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 2px 3px 8px 0px #c7c5c5;
+    font-size: 32px;
+    transition: 0.4s;
+}
+#content>div:hover{
+    box-shadow: 2px 3px 12px 0px #aaa;
+    transition: 0.4s;
+}

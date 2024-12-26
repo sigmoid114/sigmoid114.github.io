@@ -1,0 +1,65 @@
+body{
+    background-image: url("../src/snowflakes.png");
+    margin: 0px;
+}
+a{
+    text-decoration: none;
+}
+#nav-bar{
+    background-color: #1f1e33;
+    padding: 20px 300px;
+    margin-bottom: 20px;
+}
+#nav-bar>a{
+    color:white;
+    font-size: 24px;
+}
+
+#main{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.blue{
+    display: block;
+    width: 75px;
+    border-radius: 5px;
+    border: 1px solid;
+    margin: 0px 10px;
+    background-color: #0e90d2;
+    border-color: #0e90d2;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 0px;
+    color: #fff;
+    transition: 0.4s;
+}
+.blue:hover{
+    background-color: #0c79b1;
+    border-color: #0a6999;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.red{
+    display: block;
+    width: 75px;
+    border-radius: 5px;
+    border: 1px solid;
+    margin: 0px 10px;
+    background-color: #dd514c;
+    border-color: #dd514c;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 0px;
+    color: #fff;
+    transition: 0.4s;
+}
+.red:hover{
+    background-color: #d7342e;
+    border-color: #c62b26;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.right{
+    float:right;
+}

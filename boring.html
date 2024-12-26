@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>sigmoid114</title>
+    </head>
+    <body>
+        <div>
+            <h1>114514<h1>
+            <h1>1919810</h1>
+            <pre id="display"></pre>
+        </div>
+        <script>
+            function write(text){
+                console.log(text.length);
+                var n=text.length
+                var T=""
+                for(var i=0;i<n;i+=1){
+                    if(text[i]=='<') T+="&lt;";
+                    else if(text[i]=='>') T+="&gt;";
+                    else T+=text[i];
+                }
+                console.log(T);
+                document.getElementById('display').innerHTML=T;
+            }
+            path=window.location.pathname;
+            fetch(path.substring(path.lastIndexOf('/') + 1))
+                .then(response => response.text())
+                .then(text => write(text))
+                .catch(error => console.error('Error reading file:', error));
+        </script>
+    </body>
+</html>
