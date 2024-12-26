@@ -60,6 +60,9 @@ a{
     transition: 0.4s;
     cursor: pointer;
 }
+.left{
+    float:left;
+}
 .right{
     float:right;
 }

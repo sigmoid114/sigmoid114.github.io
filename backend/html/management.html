@@ -11,10 +11,16 @@
             <a href="../../">返回</a>
         </div>
         <div id="main">
-            <div>
-                <a href="../editor/" id="new_article" class="blue">新建</a>
+            <div style="height: 50px;">
+                <a href="../editor/" id="new_article" class="blue left">新建</a>
+                <a id="update" class="red left">更新</a>
             </div>
             <div id="content"></div>
         </div>
+        <script>
+            document.getElementById('update').addEventListener('click',()=>{
+                update();
+            })
+        </script>
     </body>
 </html>

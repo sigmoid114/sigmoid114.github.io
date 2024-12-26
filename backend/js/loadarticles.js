@@ -42,5 +42,17 @@ function loadarticles(){
         })
         .catch(err=>console.log('Error:',err))
 }
+
+function update(){
+    fetch('../../update_all',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        }
+    })
+        .then(res=>res.json())
+        .then(dat=>console.log(dat))
+        .catch(err=>console.log('Error:',err))
+}
+
 loadarticles();
-document.getAnimations

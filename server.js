@@ -85,11 +85,11 @@ function maintain_tags(a){
 
 app.get('/',(req,res)=>{
 	var html=fs.readFileSync('index.html').toString();
-	var n=html.length,flag=0; var s="";
+	var n=html.length; var s="";
 	for(var i=0;i<n;i+=1){
 		s+=html[i];
-		if(!flag&&html[i-2]=='d'&&html[i-1]=='y'&&html[i]=='>'){
-			s+="<a href=\"./backend/html/management.html\">博客管理</a>"; flag=1;
+		if(html[i-2]=='o'&&html[i-1]=='w'&&html[i]=='>'){
+			s+="<a href=\"./backend/html/management.html\">博客管理</a>";
 		}
 	}
 	res.send(s);
@@ -213,7 +213,14 @@ app.get('/backend/editor/:aid',(req,res,nxt)=>{
 	res.send(L+aid+R);
 })
 
+app.post('/update_all',(req,res)=>{
+	/*cp.exec('git add .');
+	cp.exec('git commit');
+	cp.exec('git push origin main');*/
+	res.json(S);
+})
+
 var server=app.listen(1145,()=>{
-	//open('localhost:1145/','firefox');
+	open('localhost:1145/','firefox');
 	console.log('success');
 })
