@@ -113,6 +113,7 @@ app.post('/get_article',(req,res)=>{
 		if(a[i].id==aid){
 			dat.title=a[i].title;
 			dat.tag=a[i].tag;
+			dat.toplevel=a[i].toplevel;
 			flag=1; break;
 		}
 	}

@@ -11,6 +11,7 @@ function loadeditor(aid){
             console.log(dat);
             document.getElementById('title').value=dat.title;
             document.getElementById('tag').value=dat.tag.name;
+            document.getElementById('toplevel').value=dat.toplevel;
             editormd("editor",{
                 width:"100%",
                 height:"100%",
