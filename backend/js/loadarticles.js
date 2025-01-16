@@ -51,7 +51,10 @@ function update(){
         }
     })
         .then(res=>res.json())
-        .then(dat=>console.log(dat))
+        .then(dat=>{
+            console.log(dat)
+            alert(dat.message);
+        })
         .catch(err=>console.log('Error:',err))
 }
 
