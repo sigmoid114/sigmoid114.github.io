@@ -220,12 +220,12 @@ app.get('/backend/editor/:aid',(req,res,nxt)=>{
 })
 
 app.post('/update_all',(req,res)=>{
-	console.log('ok');
 	cp.exec('update.bat',(err,stdout,stderr)=>{
 		if(err){
 			console.log('Error:',err);
 		}
 	});
+	console.log('ok');
 	res.json(S);
 })
 
