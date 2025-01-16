@@ -221,6 +221,21 @@ app.get('/backend/editor/:aid',(req,res,nxt)=>{
 
 app.post('/update_all',(req,res)=>{
 	console.log('ok');
+	/*cp.exec('git add .',(err,stdout,stderr)=>{
+		if(err){
+			console.log('Error:',err);
+		}
+	});
+	cp.exec('git commit -m \"\"',(err,stdout,stderr)=>{
+		if(err){
+			console.log('Error:',err);
+		}
+	});
+	cp.exec('git push origin main',(err,stdout,stderr)=>{
+		if(err){
+			console.log('Error:',err);
+		}
+	});*/
 	/*git('add .');
 	git('commit -m \"\"');
 	git('push origin main');*/
