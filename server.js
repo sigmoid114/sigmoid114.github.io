@@ -220,13 +220,17 @@ app.get('/backend/editor/:aid',(req,res,nxt)=>{
 })
 
 app.post('/update_all',(req,res)=>{
+	console.log('wait...');
 	cp.exec('update.bat',(err,stdout,stderr)=>{
 		if(err){
 			console.log('Error:',err);
+			res.json(F);
+		}
+		else{
+			console.log('ok');
+			res.json(S);
 		}
 	});
-	console.log('ok');
-	res.json(S);
 })
 
 var server=app.listen(1145,()=>{
