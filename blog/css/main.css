@@ -165,3 +165,9 @@ a{
     padding: 2px;
     color: #d30038;
 }*/
+
+.main img {
+	max-width: 100%;
+	/*width: 75%;*/
+	height: auto;
+}
