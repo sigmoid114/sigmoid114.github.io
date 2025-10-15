@@ -16,7 +16,7 @@ var git=function(cmd){
 
 app.use(express.json());
 app.use('/blog',express.static('blog'));
-app.use('/imagines',express.static('imagines'));
+app.use('/images',express.static('images'));
 app.use('/backend',express.static('backend'));
 
 var S={"message":"Success"};

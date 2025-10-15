@@ -11,7 +11,7 @@ java test
 
 一个项目一般由不少于一个 `.java` 构成，然后还可能互相调用。我们发现如果对一个 `.java` 文件执行编译指令，只有它所有被直接或间接调用的的 `.java` 才有可能被编译。但是文件一多可能就变成了这样：
 
-![](./../../imagines/0bd4c6ab315097cbfa0b868c8a91a15.png)
+![](./../../images/0bd4c6ab315097cbfa0b868c8a91a15.png)
 
 两种文件混杂在了一起，显然，这对于一个 Java 项目来说并不是一个好的方式，需要更优雅的方案。
 
@@ -67,4 +67,102 @@ javac -d %d\out\production\%p %d\src\MainClass.java
 java -cp "%d\out\production\%p" MainClass
 ```
 
-剩下的就是纯粹的 `C++` ，值得注意的是
+剩下的就是纯粹的 `C++` ，但任然有一些值得注意的地方。下面是一则我的小故事。
+
+起初我写了一版编译器代码，编译是能过了，但是一运行，然后就爆炸了：
+
+![](./../../images/af248a04bace434337c0faa82e3bd5a.png)
+
+根据提示信息能判断出来时读入问题，然后我在网上搜了各种解决方案都没用。后来我把指令直接放在 `vimrc` 里面，发现竟然能用，这说明指令本身是对的。然后我又直接在编译器代码里面写指令，发现也是能用的（所以就得到了一种用 `C++` 调用 `Java` 程序的方式）。
+
+很明显，是文件操作的问题。死因是我根据之前习惯用了 `freopen()` ，然后就导致输入重定向了，然后这会让 `Java` 里的 `Scanner(System.in);` 无法从控制台读入了。
+
+总结一下就是读取 `.txt` 内容时不要重定向就行了，所以改成了 `fopen()` + `fgetc()` 。
+
+```cpp
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+using namespace std;
+char d[114514],p[114514],f[114514];
+char c[114514],cp[114514];
+char z[114514];
+FILE *fp;
+int cmp(char *a,string b){
+	int n=strlen(a);
+	if(b.length()!=n) return 0;
+	for(int i=0;i<n;i+=1){
+		if(a[i]!=b[i]) return 0;
+	}
+	return 1;
+}
+void parse0(char *path){
+	int n=strlen(path);
+	while(n&&path[--n]!='/');
+	for(int i=0;i<n;i+=1) cp[i]=path[i];
+	cp[n++]='/'; cp[n]='\0';
+	return;
+}
+void parse(char *path){
+	int n=strlen(path),m=n,t,k=0;
+	while(m&&path[--m]!='\\');
+	for(int i=m+1;i<n;i+=1) f[k++]=path[i];
+	f[k]='\0'; k=0; n=m;
+	while(m&&path[--m]!='\\');
+	for(int i=m+1;i<n;i+=1) c[k++]=path[i];
+	c[k]='\0'; k=0; n=m;
+	while(m&&path[--m]!='\\');
+	for(int i=m+1;i<n;i+=1) p[k++]=path[i];
+	p[k]=d[n]='\0';
+	for(int i=0;i<n;i+=1) d[i]=path[i];
+	return;
+}
+void solve(){
+	char ch; int n=0;
+	while(~(ch=fgetc(fp))){
+		if(ch=='\n'){
+			z[n]='\0'; n=0;
+			if(z[0]!='#'){
+				//printf("%s\n",z);
+				system(z); //系暗示？！
+			}
+		}
+		else if(ch=='%'){
+			ch=fgetc(fp);
+			if(ch=='d'){
+				for(int i=0;d[i]!='\0';i+=1) z[n++]=d[i];
+			}
+			else if(ch=='p'){
+				for(int i=0;p[i]!='\0';i+=1) z[n++]=p[i];
+			}
+			else if(ch=='f'){
+				for(int i=0;f[i]!='\0';i+=1) z[n++]=f[i];
+			}
+		}
+		else z[n++]=ch;
+	}
+	return;
+}
+int main(int argc,char *argv[]){
+	parse0(argv[0]); parse(argv[2]);
+	if(cmp(argv[1],"-c")){
+		if(cmp(c,"src")){
+			fp=fopen(strcat(cp,"java_compile.txt"),"r");
+		}
+		else if(cmp(c,"test")){
+			//暂时留白
+		}
+	}
+	else if(cmp(argv[1],"-r")){
+		if(cmp(c,"src")){
+			fp=fopen(strcat(cp,"java_run.txt"),"r");
+		}
+		else if(cmp(c,"test")){
+			//暂时留白
+		}
+	}
+	solve(); return 0;
+}
+```
+
+文件路径有些地方用 `\` ，有些地方用 `/` ，所以可能混乱了点。
