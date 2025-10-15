@@ -166,3 +166,5 @@ int main(int argc,char *argv[]){
 ```
 
 文件路径有些地方用 `\` ，有些地方用 `/` ，所以可能混乱了点。
+
+**updated on 2025.10.15:** 发现如果 `NERDTree` 的 `CWD` 不在 `src` 下，会导致无法获取 `MainClass.java` 以外其它文件的情况，所以把编译 `MainClass.java` 的指令改成编译 `src` 下所有文件，也就是那个 `.txt` 里注释掉的那一条。
